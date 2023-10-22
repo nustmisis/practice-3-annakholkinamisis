@@ -28,9 +28,20 @@ get_plate_type!
 """
 
 import re
-
-
 def get_plate_type(plate):
     # ваше решение:
+    reg_1A = r"[а,в,е,к,м,н,о,р,с,т,у,х]{1}\d{3}[а,в,е,к,м,н,о,р,с,т,у,х]{2}\s\d{2}"
+    reg_1B = r"[а,в,е,к,м,н,о,р,с,т,у,х]{2}\d{3}\s\d{2}"
+    reg_2 = r"[а,в,е,к,м,н,о,р,с,т,у,х]{2}\d{4}\s\d{2}"
+    reg_3 = r"\d{4}[а,в,е,к,м,н,о,р,с,т,у,х]{2}\s\d{2}"
 
-    return "Fail!"
+    if re.match(reg_1A, plate):
+        return "1А"
+    elif re.match(reg_1B, plate):
+        return "1Б"
+    elif re.match(reg_2, plate):
+        return "2"
+    elif re.match(reg_3, plate):
+        return "3"
+    else:
+        return "Fail!"
